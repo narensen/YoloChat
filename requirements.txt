@@ -1,0 +1,5 @@
+torch
+transformers
+yolov5
+opencv-python-headless
+Pillow
