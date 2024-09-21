@@ -32,5 +32,5 @@ This project is designed to provide an interactive image captioning and query re
 
 ### Clone the repository:
 ```bash
-git clone https://github.com/narensen/image-captioning-query-response
-cd image-captioning-query-response
+git clone https://github.com/narensen/yolochat
+cd yolochat
