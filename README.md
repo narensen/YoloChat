@@ -34,3 +34,5 @@ This project is designed to provide an interactive image captioning and query re
 ```bash
 git clone https://github.com/narensen/yolochat
 cd yolochat
+![horse](https://github.com/user-attachments/assets/be478602-b9d8-4895-80fb-fa8daad7b5c7)
+![Screenshot from 2024-09-21 21-45-42](https://github.com/user-attachments/assets/8e8c1c0d-dd81-4280-ae78-772c85126b42)
