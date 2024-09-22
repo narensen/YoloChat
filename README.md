@@ -16,7 +16,7 @@ This project is designed to provide an interactive image captioning and query re
 1. **Input**: An image.
 2. **Object Detection**: YOLOv5 detects objects like `["person", "car", "dog"]`.
 3. **Caption Generation**: BLIP generates a caption such as: *"A person is standing next to a car while a dog is sitting in the back seat."*
-4. **Query Handling**: BERT processes user queries like "What is the dog doing?" and responds with: *"The dog is sitting in the back seat."*
+4. **Query Handling**: BERT processes user queries like "What is the horse doing?" and responds with: *"running."*
 
 ## Features
 - Object Detection using YOLOv5
