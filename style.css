@@ -1,0 +1,169 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Container */
+.card {
+    padding: 30px;
+    display: flex;
+    flex-direction: column; /* Ensure vertical alignment of elements */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: all ease-in-out 0.3s;
+}
+
+.card:hover {
+    background-color: #fdfdfd;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+/* Headings */
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px; /* Adjust spacing between heading and other content */
+}
+
+h2 {
+    text-align: left;
+    font-size: 18px;
+    margin-top: 15px; /* Adjust spacing for subtitle */
+    color: #000000;
+}
+
+/* File Input */
+input[type="file"] {
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px; /* Add space above input */
+}
+
+/* Generate Button (No Changes Here) */
+.btn-6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px; /* Adjust the spacing above the button */
+    margin-bottom: 0px;
+    scale:0.6;
+    display: center;
+    justify-content: center;
+    --color-text: #ffffff;
+    --color-background: #8f44fd;
+    --color-outline: #ff145b80;
+    --color-shadow: #00000080;
+}
+
+.btn-6 .btn-content {
+    display: flex;
+    align-items: center;
+    padding: 6px 28px 6px 36px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--color-text);
+    background: black;
+    transition: 1s;
+    border-radius: 100px;
+    box-shadow: 0 0 0.2em 0 var(--color-background);
+}
+
+.btn-6 .btn-content:hover,
+.btn-content:focus {
+    transition: 0.5s;
+    -webkit-animation: btn-content 1s;
+    animation: btn-content 1s;
+    outline: 0.1em solid transparent;
+    outline-offset: 0.2em;
+    box-shadow: 0 0 0.4em 0 var(--color-background);
+}
+
+.btn-6 .btn-content .icon-arrow {
+    transition: 0.5s;
+    margin-right: 0px;
+    transform: scale(0.6);
+}
+
+.btn-6 .btn-content:hover .icon-arrow {
+    transition: 0.5s;
+    margin-right: 25px;
+}
+
+.btn-6 .icon-arrow {
+    width: 20px;
+    margin-left: 15px;
+    position: relative;
+    top: 2px;
+    scale: 0.8;
+}
+
+/* SVG */
+.btn-6 #arrow-icon-one {
+    transition: 0.4s;
+    transform: translateX(-60%);
+}
+
+.btn-6 #arrow-icon-two {
+    transition: 0.5s;
+    transform: translateX(-30%);
+}
+
+.btn-6 .btn-content:hover #arrow-icon-three {
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.btn-6 .btn-content:hover #arrow-icon-one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+.btn-6 .btn-content:hover #arrow-icon-two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+/* Caption Result */
+#captionResult {
+    font-size: 16px;
+    margin-top: 15px;
+    color: #333;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Folder Icon */
+.SVGBG-folder-open {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path d="M19.5 6h-7.29a.47.47 0 0 1-.35-.15l-1.12-1.12A2.49 2.49 0 0 0 8.97 4H4.51a2.5 2.5 0 0 0-2.5 2.5v11a2.5 2.5 0 0 0 2.5 2.5h15a2.5 2.5 0 0 0 2.5-2.5v-9a2.5 2.5 0 0 0-2.5-2.5Zm-15 0h4.29c.13 0 .26.05.35.15l1.12 1.12c.47.47 1.1.73 1.77.73h7.46c.28 0 .5.22.5.5v1.85a3.45 3.45 0 0 0-1.5-.35H5.5c-.54 0-1.04.13-1.5.35V6.5c0-.28.22-.5.5-.5ZM20 17.5a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5v-4c0-.83.67-1.5 1.5-1.5h13c.83 0 1.5.67 1.5 1.5v4Z"/></svg>');
+}
+
+a:not(.selected):hover .SVGBG-folder-open {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path fill="%23A2CAE9" d="M3 11h18v8H3z"/><path d="M19.5 6h-7.29a.47.47 0 0 1-.35-.15l-1.12-1.12A2.49 2.49 0 0 0 8.97 4H4.51a2.5 2.5 0 0 0-2.5 2.5v11a2.5 2.5 0 0 0 2.5 2.5h15a2.5 2.5 0 0 0 2.5-2.5v-9a2.5 2.5 0 0 0-2.5-2.5Zm-15 0h4.29c.13 0 .26.05.35.15l1.12 1.12c.47.47 1.1.73 1.77.73h7.46c.28 0 .5.22.5.5v1.85a3.45 3.45 0 0 0-1.5-.35H5.5c-.54 0-1.04.13-1.5.35V6.5c0-.28.22-.5.5-.5ZM20 17.5a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5v-4c0-.83.67-1.5 1.5-1.5h13c.83 0 1.5.67 1.5 1.5v4Z"/></svg>');
+}
+
+.selected .SVGBG-folder-open {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000"><path fill="%23A2CAE9" d="M3 11h18v8H3z"/><path fill="%2300AAFD" d="M19.5 6h-7.29a.47.47 0 0 1-.35-.15l-1.12-1.12A2.49 2.49 0 0 0 8.97 4H4.51a2.5 2.5 0 0 0-2.5 2.5v11a2.5 2.5 0 0 0 2.5 2.5h15a2.5 2.5 0 0 0 2.5-2.5v-9a2.5 2.5 0 0 0-2.5-2.5Zm-15 0h4.29c.13 0 .26.05.35.15l1.12 1.12c.47.47 1.1.73 1.77.73h7.46c.28 0 .5.22.5.5v1.85a3.45 3.45 0 0 0-1.5-.35H5.5c-.54 0-1.04.13-1.5.35V6.5c0-.28.22-.5.5-.5ZM20 17.5a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5v-4c0-.83.67-1.5 1.5-1.5h13c.83 0 1.5.67 1.5 1.5v4Z"/></svg>');
+}
