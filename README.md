@@ -32,7 +32,7 @@ This project is designed to provide an interactive image captioning and query re
    - PyTorch
    - Hugging Face Transformers
    - Pillow for image processing
-
+   - Userlytics
 ### Clone the repository:
 ```bash
 git clone https://github.com/narensen/yolochat
