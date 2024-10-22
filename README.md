@@ -27,7 +27,7 @@ This project is designed to provide an interactive image captioning and query re
 ## Installation
 
 ### Prerequisites
-1. Python 3.x
+1. Python 3.7
 2. Install required libraries:
    - PyTorch
    - Hugging Face Transformers
