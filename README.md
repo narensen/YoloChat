@@ -1,5 +1,7 @@
 # Image Captioning and Query Response System
-
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
+[![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 This repository contains an end-to-end image captioning and query response system using **YOLOv5** for object detection, **BLIP** for image captioning, and **BERT** for query understanding and response generation. The system can detect objects in an image, generate descriptive captions, and respond to natural language queries about the image.
 
 ![horse](https://github.com/user-attachments/assets/be478602-b9d8-4895-80fb-fa8daad7b5c7)
