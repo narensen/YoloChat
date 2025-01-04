@@ -9,7 +9,7 @@ from PIL import Image
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
 
 # Perform object detection on an image
-img_path = "/home/naren/Documents/YoloChat/horse.jpg"
+img_path = "horse.jpg"
 results = model(img_path)
 detected_objects = results.pandas().xyxy[0]['name'].tolist()
 print("Detected Objects:", detected_objects)
