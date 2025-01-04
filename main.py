@@ -52,7 +52,7 @@ blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('templates/index.html')
 
 @app.route('/generate_caption', methods=['POST'])
 def generate_caption():
