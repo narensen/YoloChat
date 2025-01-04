@@ -9,7 +9,7 @@ from PIL import Image
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
 
 # Perform object detection on an image
-img_path = "horse.jpg"
+img_path = "/home/naren/Documents/YoloChat/horse.jpg"
 results = model(img_path)
 detected_objects = results.pandas().xyxy[0]['name'].tolist()
 print("Detected Objects:", detected_objects)
@@ -52,7 +52,7 @@ blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image
 
 @app.route('/')
 def index():
-    return render_template('templates/index.html')
+    return render_template('index.html')
 
 @app.route('/generate_caption', methods=['POST'])
 def generate_caption():
