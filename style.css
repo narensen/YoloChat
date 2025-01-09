@@ -15,7 +15,7 @@ body {
 .card {
     padding: 30px;
     display: flex;
-    flex-direction: column; /* Ensure vertical alignment of elements */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     width: 100%;

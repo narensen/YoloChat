@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yolo-chat</title>
-    <link rel="stylesheet" href="static/themes/style.css">
+    <link rel="stylesheet" href="style.css">
     <script>
-        // Function to show selected image name in the text box
+
         function showImageName() {
             const fileInput = document.getElementById('imageInput');
             const fileNameDisplay = document.getElementById('fileNameDisplay');
             if (fileInput.files.length > 0) {
-                fileNameDisplay.value = fileInput.files[0].name; // Show image name
+                fileNameDisplay.value = fileInput.files[0].name;
             } else {
-                fileNameDisplay.value = ''; // Clear the field if no file is selected
+                fileNameDisplay.value = '';
             }
         }
 
@@ -40,7 +40,7 @@
     </div>
         <br>
 
-        <!-- File Input with Image Aligned to the Left -->
+
         <div class="input-group custom-file-button">
             <label for="imageInput" class="input-label">
                 <img src="folder-open.png" alt="folder icon" class="folder-icon">
@@ -49,7 +49,7 @@
             <input type="file" id="imageInput" accept=".png,.jpg,.jpeg" hidden onchange="showImageName()">
         </div>
         
-        <!-- Textbox to show the selected image name -->
+
         <br>
         <input type="text" id="fileNameDisplay" placeholder="No image selected" readonly style="width: 100%; padding: 8px; margin-top: 10px;">
         
