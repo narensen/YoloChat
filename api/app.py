@@ -1,50 +1,47 @@
+from flask import Flask, request, jsonify, send_from_directory
 import torch
-import torch.nn as nn
-from transformers import BlipProcessor, BlipForConditionalGeneration, BertTokenizer, BertForQuestionAnswering
-from flask import Flask, request, jsonify, render_template
+from transformers import BlipProcessor, BlipForConditionalGeneration
 import os
 from PIL import Image
+import tempfile
 
-# Load YOLO model
+app = Flask(__name__)
+
+# Initialize models in global scope
 yolo_model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
-
-# Load BLIP model for image captioning
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
 blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
-# Initialize Flask app
-app = Flask(__name__)
-
 @app.route('/')
-def index():
-    return render_template('index.html')
+def home():
+    return send_from_directory('../public', 'index.html')
 
 @app.route('/generate_caption', methods=['POST'])
 def generate_caption():
     if 'image' not in request.files:
         return jsonify({'error': 'No image uploaded'})
 
-    # Save the uploaded image
     image = request.files['image']
-    image_path = os.path.join('.', image.filename)
-    image.save(image_path)
+    
+    # Use temporary file
+    with tempfile.NamedTemporaryFile(delete=False) as tmp:
+        image.save(tmp.name)
+        
+        # Object detection
+        results = yolo_model(tmp.name)
+        detected_objects = results.pandas().xyxy[0]['name'].tolist()
+        
+        # Caption generation
+        img = Image.open(tmp.name)
+        inputs = processor(img, return_tensors="pt")
+        outputs = blip_model.generate(**inputs)
+        caption = processor.decode(outputs[0], skip_special_tokens=True)
+        
+        os.unlink(tmp.name)
+        
+    return jsonify({
+        'detected_objects': detected_objects,
+        'caption': caption
+    })
 
-    # Perform object detection
-    results = yolo_model(image_path)
-    detected_objects = results.pandas().xyxy[0]['name'].tolist()
-
-    # Generate image caption
-    img = Image.open(image_path)
-    inputs = processor(img, return_tensors="pt")
-    outputs = blip_model.generate(**inputs)
-    caption = processor.decode(outputs[0], skip_special_tokens=True)
-
-    # Remove the uploaded image
-    os.remove(image_path)
-
-    return jsonify({'detected_objects': detected_objects, 'caption': caption})
-
-if __name__ == '__main__':
-    # Ensure the 'uploads' directory exists
-    os.makedirs('uploads', exist_ok=True)
-    app.run(debug=True)
+app = app.wsgi_app
