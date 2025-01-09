@@ -15,14 +15,9 @@ blip_model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image
 # Initialize Flask app
 app = Flask(__name__)
 
-# Updated Flask routes
 @app.route('/')
 def index():
-    return render_template('index.html')  # Place index.html in root folder
-
-# Add static file handling
-app.static_folder = '.'
-app.static_url_path = ''
+    return render_template('index.html')
 
 @app.route('/generate_caption', methods=['POST'])
 def generate_caption():

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .upload-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+        }
+
+        #image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .results {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .results h2 {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .results-content {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Analysis</h1>
+        <div class="upload-section">
+            <input type="file" id="image-input" accept="image/*">
+            <button onclick="analyzeImage()">Analyze Image</button>
+            <img id="image-preview" alt="Preview">
+            <div id="loading">Analyzing image...</div>
+        </div>
+        <div class="results">
+            <h2>Results</h2>
+            <div class="results-content">
+                <p><strong>Caption:</strong> <span id="caption"></span></p>
+                <p><strong>Detected Objects:</strong> <span id="objects"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('image-input').addEventListener('change', function(e) {
+            const preview = document.getElementById('image-preview');
+            preview.style.display = 'block';
+            preview.src = URL.createObjectURL(e.target.files[0]);
+        });
+
+        async function analyzeImage() {
+            const input = document.getElementById('image-input');
+            if (!input.files[0]) {
+                alert('Please select an image first');
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            const results = document.querySelector('.results');
+            loading.style.display = 'block';
+            results.style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('image', input.files[0]);
+
+            try {
+                const response = await fetch('/generate_caption', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                document.getElementById('caption').textContent = data.caption;
+                document.getElementById('objects').textContent = data.detected_objects.join(', ');
+                results.style.display = 'block';
+            } catch (error) {
+                alert('Error analyzing image');
+                console.error(error);
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
